@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+
+<!-- Hero section-->
+<section class="py-0">
+  <!-- slide-show start -->
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+    <div class="carousel-inner">
+    <div class="carousel-item active">
+          <div class="container-sm">
+            <div class="slide-images">
+              <img src="{{currentcat.image_fon.url}}" alt="">
+            </div>
+            <div class="slide-comments">
+              <span class="slide__product-date"></span>
+              <h1 class="slide__product-name">{{currentcat.name}}</h1>
+              <p class="slide__product-comment">{{currentcat.description}}</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- slide-show end -->
+</section>
+<section class="py-5">
+  <div class="container py-5">
+    <div class="row">
+      <!-- Shop sidebar-->
+      <div class="col-xl-2 col-lg-3 order-2 order-lg-1">
+        <h5 class="mb-4">{% trans "Subkategoriya bo'yicha filtrlash"  %}</h5>
+        <ul class="list-unstyled text-muted mb-5">
+          {% for item in subcats %}
+          <li class="mb-2 d-flex align-items-center justify-content-between"><a class="reset-anchor"
+              href="{% url 'subcategoryDetail' item.pk %}">{{item.name}}</a><span
+              class="badge bg-light text-dark">{{item.product_set.count}}</span></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <!-- Shop listing-->
+      <div class="col-xl-10 col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
+        <!-- Listing filter-->
+     
+        <div class="row">
+          {% for product in products %}
+          <!-- Product-->
+          <div class="col-xl-3 col-lg-4 col-6">
+            <div class="product mb-4"><span class="badge rounded-0 bg-primary">New Arrival</span><a
+                href="{% url 'productDetail' product.pk %}"><img class="img-fluid" src="{{product.small_image}}"
+                  alt="Round grey hanging decor"></a>
+            </div>
+            <h6 class="text-center"><a class="reset-anchor" href="{% url 'productDetail' product.pk %}">{{product.name}}</a></h6>
+            <p class="text-center text-muted font-weight-bold mb-4">{{product.price}}</p>
+          </div>
+          {% endfor %}
+
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
