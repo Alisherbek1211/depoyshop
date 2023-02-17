@@ -149,10 +149,10 @@ LOCALE_PATHS = [
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static"),
-# ] 
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+] 
+# STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 # Simplified static file serving.
 # https://pypi.org/project/whitenoise/
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
